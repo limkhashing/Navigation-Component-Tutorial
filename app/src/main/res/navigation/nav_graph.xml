@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/mainFragment">
+
+    <!--  mainFragment -->
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_viewTransactionFragment"
+            app:destination="@id/viewTransactionFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+
+        <!-- popUpTo describe what happen when click back button -->
+        <!-- popUpToInclusive boolean true clear backstacks
+        including fragment that navigating to -->
+        <!-- useful also for circular navigation of fragment -->
+        <action
+            android:id="@+id/action_mainFragment_to_chooseRecipientFragment"
+            app:destination="@id/chooseRecipientFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left" />
+<!--            app:popUpTo="@id/mainFragment"-->
+<!--            app:popUpToInclusive="true"-->
+<!--            />-->
+
+        <action
+            android:id="@+id/action_mainFragment_to_viewBalanceFragment"
+            app:destination="@id/viewBalanceFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <!--  viewTransactionFragment -->
+    <fragment
+        android:id="@+id/viewTransactionFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.ViewTransactionFragment"
+        android:label="fragment_view_transaction"
+        tools:layout="@layout/fragment_view_transaction" />
+
+    <!--  chooseRecipientFragment -->
+    <fragment
+        android:id="@+id/chooseRecipientFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.ChooseRecipientFragment"
+        android:label="fragment_choose_recipient"
+        tools:layout="@layout/fragment_choose_recipient" >
+        <action
+            android:id="@+id/action_chooseRecipientFragment_to_specifyAmountFragment"
+            app:destination="@id/specifyAmountFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <!--  viewBalanceFragment -->
+    <fragment
+        android:id="@+id/viewBalanceFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.ViewBalanceFragment"
+        android:label="fragment_view_balance"
+        tools:layout="@layout/fragment_view_balance" />
+
+    <!--  specifyAmountFragment -->
+    <!-- argument is used to receive input as received bundle fragment-->
+    <fragment
+        android:id="@+id/specifyAmountFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.SpecifyAmountFragment"
+        android:label="fragment_specify_amount"
+        tools:layout="@layout/fragment_specify_amount" >
+
+        <argument android:name="recipient"
+            android:defaultValue="None"/>
+
+        <action
+            android:id="@+id/action_specifyAmountFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+
+    <!--  confirmationFragment -->
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.kslimweb.androidnavigationcomponent.ConfirmationFragment"
+        android:label="fragment_confirmation"
+        tools:layout="@layout/fragment_confirmation">
+
+        <argument android:name="recipient"
+            android:defaultValue="None"/>
+
+        <argument android:name="amount"
+            app:argType="com.kslimweb.androidnavigationcomponent.Money"/>
+
+    </fragment>
+
+</navigation>
